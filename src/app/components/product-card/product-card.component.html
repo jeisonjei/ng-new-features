@@ -1,0 +1,23 @@
+<mat-card class="card">
+    <mat-card-title>
+        {{product?.title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+        {{product?.category}}
+    </mat-card-subtitle>
+    <mat-card-content>
+        <img mat-card-sm-image src="{{product?.imgSrc}}" alt="" srcset="" >
+        <p>{{product?.description}}</p>
+        <p>{{product?.price}}</p>
+        <p>{{total}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="flex-col">
+            <mat-form-field>
+                <mat-label>Quantity</mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+            <button mat-flat-button (click)="addToCart(product)">Add to Cart</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

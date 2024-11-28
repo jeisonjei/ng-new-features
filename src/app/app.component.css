@@ -1,0 +1,13 @@
+.container{
+    padding: 2em 4em;
+    background-color: rgba(220,220,220,1);
+}
+.grid3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
