@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/Product';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -17,10 +17,24 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css'
 })
-export class ProductCardComponent {
-  addToCart(arg0: Product | null) {
-    throw new Error('Method not implemented.');
-  }
+export class ProductCardComponent implements OnInit{
   @Input() product: (Product | null) = null;
-  total: any;
+
+  formGroup: FormGroup = new FormGroup({
+    quantity: new FormControl(1)
+  });
+  
+  total: number = 0;
+
+
+
+  ngOnInit(): void {
+    this.total = this.product?.price ?? 0;
+    this.formGroup.controls['quantity'].valueChanges.subscribe((value) => {
+      this.total = (this.product?.price ?? 0) * value;
+    });
+  }
+  addToCart(arg0: Product | null) {
+
+  }
 }

@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" [formGroup]="formGroup">
     <mat-card-title>
         {{product?.title}}
     </mat-card-title>
@@ -8,16 +8,16 @@
     <mat-card-content>
         <img mat-card-sm-image src="{{product?.imgSrc}}" alt="" srcset="" >
         <p>{{product?.description}}</p>
-        <p>{{product?.price}}</p>
-        <p>{{total}}</p>
+        <p>price: {{product?.price}}</p>
+        <p>total: {{total}}</p>
     </mat-card-content>
     <mat-card-actions>
         <div class="flex-col">
             <mat-form-field>
                 <mat-label>Quantity</mat-label>
-                <input type="number" matInput>
+                <input type="number" matInput formControlName="quantity">
             </mat-form-field>
-            <button mat-flat-button (click)="addToCart(product)">Add to Cart</button>
+            <button mat-flat-button color="primary" (click)="addToCart(product)">Add to Cart</button>
         </div>
     </mat-card-actions>
 </mat-card>
